@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+    position: relative;
+}
+
+body {
+    background-image: url("background.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+header, footer, #main {
+    background-color: rgba(16, 36, 48, 0.844);
+    color: white;
+}
+
+header, footer, #main {
+    display: flex;
+}
+
+header h1, footer p {
+    margin: auto;
+}
+
+/*********** header ***********/
+
+header {
+    width: 100%;
+    height: 100px;
+}
+
+header h1 {
+    font-size: 50px;
+}
+
+/************ main ************/
+
+main {
+    margin: 30px 0 80px 0;
+    display: flex;
+}
+
+#main {
+    flex-direction: column;
+    border-radius: 45px;
+    margin: auto;
+    width: 990px;
+    padding: 20px;
+}
+
+#main #newTaskForm {
+    margin: auto;
+}
+
+/** multi-elements **/
+
+#main form #deleteButton, #main .list .checkButton, #main form #validButton, #main .list .taskName {
+    transition: all 0.2s ease;
+}
+
+#main form #deleteButton, #main .list .checkButton, #main form #validButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main form #deleteButton, #main form #validButton {
+    border-radius: 0 50px 50px 0;
+    color: white;
+}
+
+#main .list .checkButton, #main .list p, #main .list #deleteButton {
+    height: 35px;
+}
+
+#main .list .checkButton, #main .list #deleteButton {
+    font-size: 20px;
+    width: 40px;
+    border: none;
+    padding: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    #main .list .checkButton, #main .list p, #main .list #deleteButton {
+        height: 25px;
+    }
+}
+
+/******* form *******/
+
+#main form input, #main form #validButton {
+    margin: 0;
+    height: 50px;
+    border: none;
+    background-color: white;
+}
+
+#main form {
+    display: flex;
+    align-items: center;
+}
+
+#main form input {
+    padding: 0 10px 0 20px;
+    font-size: 20px;
+    width: 400px;
+    border-radius: 50px 0 0 50px;
+}
+
+#main form #validButton {
+    width: 50px;
+    font-size: 40px;
+    color: rgba(16, 36, 48, 0.844);
+}
+
+#main form #validButton:hover {
+    background: none;
+    color: white;
+}
+
+@media screen and (max-width: 990px) {
+    #main {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #main form input, #main form #validButton {
+        height: 40px;
+    }
+    #main form input {
+        padding: 0 10px 0 20px;
+        font-size: 20px;
+        width: 60vw;
+    }
+    #main form #validButton {
+        font-size: 30px;
+    }
+}
+
+/******* list *******/
+
+#main .list:first-of-type {
+    margin-top: 20px;
+}
+
+#main .list {
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+#main .list .checkButton {
+    border-radius: 50px 0 0 50px;
+    margin: 0;
+}
+
+#main .list .checkButton:hover {
+    background: none;
+}
+
+#main .list p {
+    background-color: rgba(255, 255, 255, 0.46);
+    color: black;
+    padding: 5px 20px 5px 20px;
+}
+
+#main .list #deleteButton {
+    background: rgb(238, 85, 85);
+}
+
+#main .list #deleteButton:hover {
+    color: rgb(238, 85, 85);
+    background: none;
+}
+
+@media screen and (max-width: 900px) {
+    #main .list {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #main .list {
+        font-size: 15px;
+    }
+}
+
+/***** js class *****/
+
+.taskChecked {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.buttonNotChecked {
+    background: rgb(51, 131, 63);
+    color: white;
+}
+
+.buttonNotChecked:hover {
+    color: rgb(51, 131, 63);
+    background: none;
+}
+
+.buttonChecked {
+    background: rgba(243, 222, 66, 0.200);
+    color: white;
+}
+
+.buttonChecked:hover {
+    color: rgba(243, 222, 66, 0.200);
+    background: none;
+}
+/*********** footer ***********/
+
+footer {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 0;
+    font-size: 20px;
+}
