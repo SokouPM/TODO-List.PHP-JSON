@@ -62,27 +62,27 @@ main {
 
 /** multi-elements **/
 
-#main form #deleteButton, #main .list .checkButton, #main form #validButton, #main .list .taskName {
+#main form .deleteButton, #main .list .checkButton, #main form #validButton, #main .list .taskName {
     transition: all 0.2s ease;
 }
 
-#main form #deleteButton, #main .list .checkButton, #main form #validButton {
+#main form .deleteButton, #main .list .checkButton, #main form #validButton {
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#main form #deleteButton, #main form #validButton {
+#main form .deleteButton, #main form #validButton {
     border-radius: 0 50px 50px 0;
     color: white;
 }
 
-#main .list .checkButton, #main .list p, #main .list #deleteButton {
+#main .list .checkButton, #main .list p, #main .list .deleteButton {
     height: 35px;
 }
 
-#main .list .checkButton, #main .list #deleteButton {
+#main .list .checkButton, #main .list .deleteButton {
     font-size: 20px;
     width: 40px;
     border: none;
@@ -90,7 +90,7 @@ main {
 }
 
 @media screen and (max-width: 600px) {
-    #main .list .checkButton, #main .list p, #main .list #deleteButton {
+    #main .list .checkButton, #main .list p, #main .list .deleteButton {
         height: 25px;
     }
 }
@@ -125,6 +125,12 @@ main {
 #main form #validButton:hover {
     background: none;
     color: white;
+}
+
+#errorMessage {
+    color: rgb(253, 64, 64);
+    font-size: 20px;
+    margin: auto;
 }
 
 @media screen and (max-width: 990px) {
@@ -176,11 +182,11 @@ main {
     padding: 5px 20px 5px 20px;
 }
 
-#main .list #deleteButton {
+#main .list .deleteButton {
     background: rgb(238, 85, 85);
 }
 
-#main .list #deleteButton:hover {
+#main .list .deleteButton:hover {
     color: rgb(238, 85, 85);
     background: none;
 }

@@ -1,10 +1,13 @@
 'use strict'
 
 //// SELECTORS ////
+const newTaskForm = document.getElementById('newTaskForm');
+const newTaskNameField = document.getElementById('newTaskName');
+const errorMessage = document.getElementById('errorMessage');
+
+const content = document.getElementsByClassName('list');
 const checkButton = document.getElementsByClassName('checkButton');
 const taskName = document.getElementsByClassName('taskName');
-const newTaskForm = document.getElementById('newTaskForm');
-const content = document.getElementsByClassName('list');
 
 //// EVENTS ////
 for (let i = 0; i < checkButton.length; i++) {
@@ -21,4 +24,18 @@ for (let i = 0; i < checkButton.length; i++) {
         }
 
     });
+}
+
+newTaskForm.addEventListener("submit", fieldControl);
+
+//// FUNCTIONS ////
+function fieldControl(e) {
+
+    if (newTaskNameField.value === '') {
+        e.preventDefault();
+        errorMessage.innerHTML = "Veuillez remplir le champ";
+    } else {
+        errorMessage.innerHTML = "";
+    }
+
 }

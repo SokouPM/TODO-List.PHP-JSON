@@ -1,6 +1,6 @@
 <?php
 
-require('back/model/Task.php');
+require('back/model/Task.php');     // call the model
 
 class MainController
 {
@@ -8,38 +8,38 @@ class MainController
     public static function runApp(): void
     {
 
-        $jsonFilePath = "back/json/list.json";
-        $todoArrayContent = Task::getJsonContent($jsonFilePath);
+        $jsonFilePath = "back/json/list.json";      // set the path of json file
+        $todoArrayContent = Task::getJsonContent($jsonFilePath);      // call getJsonContent function
 
         switch (key($_GET)) {
 
             case null:
+                /************************************* Main page *************************************/
+                $arrayLineIndex = 0;     // to get the array line
+                require_once('front/view/mainPage.php');    // show main page
 
-                $elementNumber = 0;
-                require_once('front/view/mainPage.php');
-                
                 break;
 
             case 'addTask':
-
-                if (isset($_POST['newTask']) && !empty($_POST['newTask'])) {
-                    $newTaskName = filter_var($_POST['newTask'], FILTER_SANITIZE_SPECIAL_CHARS);
+                /********************************* Add task code page ********************************/
+                if (isset($_POST['newTaskName']) && !empty($_POST['newTaskName'])) {    // check if field value exist and is not empty
+                    $newTaskName = filter_var($_POST['newTaskName'], FILTER_SANITIZE_SPECIAL_CHARS); // secure the entered data
                 } else {
-                    header('location: index.php');
+                    header('location: index.php');  // go to main page
                 }
 
-                $newTask = new Task($newTaskName);
-                $newTaskArray = ['name' =>  $newTask->get_name()];
-                Task::editJsonContent($jsonFilePath, $todoArrayContent, $newTaskArray);
-                header('location: index.php');
+                $newTask = new Task($newTaskName);  // create a new Task object with the model
+                $newTaskArray = ['name' =>  $newTask->get_name()];  // create an array with the get_name function
+                Task::editArrayContent($jsonFilePath, $todoArrayContent, $newTaskArray); // call the editArrayContent function 
+                header('location: index.php');  // go to main page
 
                 break;
 
             case 'deleteTask':
-
-                $lineNumber = intval($_POST['taskNumber']);
-                Task::deleteJsonContent($jsonFilePath, $todoArrayContent, $lineNumber);
-                header('location: index.php');
+                /********************************* delete task code page ********************************/
+                $lineIndex = intval($_POST['arrayLineIndex']);  // get the number of the row to delete
+                Task::deleteArrayContent($jsonFilePath, $todoArrayContent, $lineIndex); // call the deleteArrayContent function 
+                header('location: index.php');  // go to main page
 
                 break;
 

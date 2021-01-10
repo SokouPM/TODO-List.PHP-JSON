@@ -18,21 +18,20 @@
   <main>
     <div id="main">
       <form action="index.php?addTask" id="newTaskForm" method="POST">
-        <input type="text" name="newTask" pattern="[a-zA-ZÀ-ÿ0-9 ]{1,30}" required="required" placeholder="Ajouter une tâche">
+        <input type="text" id="newTaskName" name="newTaskName" pattern="[a-zA-ZÀ-ÿ0-9 ]{1,30}" required="required" placeholder="Ajouter une tâche">
         <button id="validButton"><i class="fa fa-plus-circle"></i></button>
       </form>
+      <p id="errorMessage"></p>
 
       <?php foreach ($todoArrayContent as $list) : ?>
-        <?php foreach ($list as $task) : ?>
-          <div class="list">
-            <button class="checkButton buttonNotChecked"><i class="fas fa-check"></i></i></button>
-            <form action="index.php?deleteTask" method="POST">
-              <p class="taskName"><?= $task ?></p>
-              <input type="hidden" name="taskNumber" value="<?= $elementNumber++ ?>">
-              <button id="deleteButton"><i class="far fa-trash-alt"></i></button>
-            </form>
-          </div>
-        <?php endforeach ?>
+        <div class="list">
+          <button class="checkButton buttonNotChecked"><i class="fas fa-check"></i></i></button>
+          <form action="index.php?deleteTask" method="POST">
+            <p class="taskName"><?= $list['name'] ?></p>
+            <input type="hidden" name="arrayLineIndex" value="<?= $arrayLineIndex++ ?>">
+            <button class="deleteButton"><i class="far fa-trash-alt"></i></button>
+          </form>
+        </div>
       <?php endforeach ?>
 
     </div>
